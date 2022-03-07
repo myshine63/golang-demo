@@ -22,11 +22,20 @@ func removeFromHead(n int, slice []int) []int {
 
 // 删除指定位置的几个元素
 func removeByIndex(index int, n int, slice []int) []int {
+	if index >= len(slice) {
+		return slice
+	}
+	if index+n > len(slice)-1 {
+		return slice[0:index]
+	}
 	return append(slice[0:index], slice[index+n:]...)
 }
 
 // 删除尾部的几个元素
 
 func removeFromTail(n int, slice []int) []int {
+	if n > len(slice) {
+		return slice[0:0]
+	}
 	return slice[:len(slice)-n]
 }

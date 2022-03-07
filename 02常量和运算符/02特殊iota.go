@@ -1,7 +1,7 @@
 package main
 
 func main() {
-	// 特殊常量iota遇到const时，会被重置为0
+	// 特殊常量iota遇到const时，会被重置为0,
 	const (
 		a = iota // 重置，因此为0
 		b = "hello word"

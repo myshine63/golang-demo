@@ -1,12 +1,5 @@
 package main
 
-func main() {
-	typeOne()
-	typeTwo()
-	typeThree()
-	typeFour()
-}
-
 // 常规用法
 func typeOne() {
 	for i := 0; i < 2; i++ { // 大括号需要在同一行,另外不能加括号包起来，go会把整个括号的内容当成一个表达式
@@ -52,4 +45,11 @@ loop:
 			println(i, j)
 		}
 	}
+}
+
+func main() {
+	typeOne()
+	typeTwo()
+	typeThree()
+	typeFour()
 }

@@ -8,7 +8,7 @@ import (
 func main() {
 	a, b, c, d, e := 2021, "hello tom", false, 'd', 0.0
 	var f = &a
-	var g = &e
+	var g = &d
 	fmt.Println(reflect.TypeOf(a)) // int
 	fmt.Println(reflect.TypeOf(b)) // string
 	fmt.Println(reflect.TypeOf(c)) // bool

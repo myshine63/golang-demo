@@ -1,16 +1,19 @@
 package main
 
-import "math/rand"
+import "fmt"
 
 func main() {
-	a := rand.Intn(100)
-	if !(a < 10+1) { // 大括号必须和if语句在同一行,表达式最外层没有括号
-		println("success")
+	// if的判断条件必须强制bool类型，不能是0,"",nil,
+	const a = "hello tom"
+	if len(a) < 10 {
+		fmt.Println("小于10")
 	} else {
-		println("fail")
+		fmt.Println("大于10")
 	}
-	// 判断表达式前面可以有一个语句，其作用于为当前的if作用于内
-	if a := rand.Intn(10); a < 10 {
-		println("success")
+	// a的作用域只限于这个if语句
+	if a := "123"; len(a) <= 3 {
+		fmt.Println("123的长度小于3")
+	} else {
+		fmt.Println("123的长度大于3")
 	}
 }

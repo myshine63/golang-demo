@@ -12,7 +12,4 @@ func main() {
 	println(a)
 	b--
 	println(b)
-	// e := a++ 不能直接赋值，比较诡异
-	// --a,没有这种写法
-	// println(a++) 没有这种写法
 }

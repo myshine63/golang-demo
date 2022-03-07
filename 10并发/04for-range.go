@@ -1,0 +1,31 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	channel := make(chan int, 10)
+	// 向channel中写入数据
+	go func() {
+		for i := 0; i < 10; i++ {
+			channel <- i
+			fmt.Println("向channel中写入数据：", i)
+		}
+		// 关闭管道，之后不可以在发送数据，但是可以读取数据
+		close(channel)
+	}()
+	// 读取channel中的数据
+	//go func() {
+	//	// 注意只有一个参数返回
+	//	for value := range channel {
+	//		fmt.Println("读取channel中的数据：", value)
+	//	}
+	//}()
+	// for-range不能知道数据已经写完，必须要主动关闭通道
+	for value := range channel {
+		fmt.Println("读取channel中的数据：", value)
+	}
+	time.Sleep(time.Second)
+}

@@ -1,5 +1,7 @@
 package main
 
+var h = 123
+
 func main() {
 	// 申明int的变量并赋值
 	var a int = 10
@@ -16,4 +18,5 @@ func main() {
 	println(c)
 	println(d, e)
 	println(f, g)
+	println(h)
 }

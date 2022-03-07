@@ -9,12 +9,14 @@ func main() {
 	println(defaultValue())
 }
 
+// 同一个包内，函数名不能重复
+
 // 参数的形式: 变量名 类型。参数和返回参数列表相当于申明了一些变量，在函数体内部可以直接使用。
 func op(a int, b int) (sum int, sub int) {
 	sum = a + b
 	sub = a - b
 	// 返回值的顺序可以函数返回列表不一致，以返回的顺序为准
-	return sub, sum
+	return
 }
 
 // 返回默认值
