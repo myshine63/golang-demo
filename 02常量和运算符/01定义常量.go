@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+const d = 3.14 // 定义在函数外面的变量，在这个包内都可以使用
 func main() {
 	// 1.常量可以定义了，不被使用
 	const a = "hello word"

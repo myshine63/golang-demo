@@ -8,7 +8,7 @@ func main() {
 	c, d := 0.1, 0.2
 	println(c + d) // 浮点数相加，会出现精度问题，不为0.3,
 	println((c + d) == 0.3)
-	a++
+	a++ // 自增语法，必须单独一行
 	println(a)
 	b--
 	println(b)

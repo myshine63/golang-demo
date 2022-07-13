@@ -10,7 +10,7 @@ func main() {
 	// 短变量申明方式，不能在全局中使用，并且一次至少要申明一个新变量
 	c := 'c' // 字符类型的变量
 	// 一次申明多个变量
-	var d, e = "hello", "tom"
+	var d, e = "hello", 123
 	var f string
 	f, g := "hello", "myshine63" // 至少要申明一个新变量
 	println(a)
