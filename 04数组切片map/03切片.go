@@ -15,8 +15,10 @@ func sliceByArr() {
 	fmt.Println(newSlice)
 	// 通过数组生成一个切片
 	arr := [...]string{"tom", "is", "a", "good", "boy"}
-	slice := arr[0:] //不能超过数原数组长度
+	slice := arr[:] // 完整生成一个切片
 	fmt.Println("复制的切片:", slice)
+	fmt.Println("复制的切片的长度:", len(slice))
+	fmt.Println("复制的切片的容量:", cap(slice))
 	// 从指定位置生产切片，不包最后
 	slice2 := arr[1:3]
 	fmt.Println("1-3生成的切片", slice2)
@@ -31,19 +33,15 @@ func sliceByArr() {
 func newSlice() {
 	// 申明一个切片，注意没有大小，这个时候切片未分配内存，可以用nil判断
 	var slice []int
-	// 判断切片是否为空
+	// 判断切片是否分配内存
 	if slice == nil {
-		fmt.Println("slice是个空切片")
+		fmt.Println("slice是个空切片", &slice)
+		fmt.Println("slice的长度", len(slice))
+		fmt.Println("slice的容量", cap(slice))
+	} else {
+		fmt.Println(slice) // 相当于空数组
 	}
-	fmt.Println(slice) // 相当于空数组
-	fmt.Println(len(slice))
-	fmt.Println(cap(slice))
-	// 不能通过a == nil判断切片是否为空
-	a := []int{}
-	if a == nil {
-		fmt.Println("a是空切片")
-	}
-	// 给申明后的切片赋值
+	// 给申明的切片分配内存
 	slice = make([]int, 4, 8) // 切片的长度为4，容量为8，并且前4个元素用0进行填充
 	fmt.Println(slice)
 	fmt.Println(len(slice))
@@ -56,10 +54,11 @@ func newSlice() {
 }
 
 func appendData() {
-	// 注意数组不能通过append添加元素，当cap=len时再添加元素，cap=cap*2.当cap再次等于len时cap会再次扩大
-	// 当切片用0进行填充后，append会在切片末尾添加元素，这时切片的长度+1
-	// append添加元素，并不会修改原来切片的值
-	slice := make([]int, 1, 4)
+	// 1.注意数组不能通过append添加元素。
+	// 2.当cap=len时，再添加元素，cap=cap*2。依次类推
+	// 3.append会在切片末尾添加元素，因此要注意默认的填充值
+	// 4.append添加元素，并不会修改原来切片的值，而是返回一个新的切片。新切片和旧切片，共享部分内存
+	slice := make([]int, 4, 8)
 	slice1 := append(slice, 1)
 	fmt.Println(&slice[0] == &slice1[0]) // true
 	fmt.Println(slice)

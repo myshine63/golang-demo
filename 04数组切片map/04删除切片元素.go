@@ -14,8 +14,8 @@ func main() {
 
 // 删除头部的前n个元素
 func removeFromHead(n int, slice []int) []int {
-	if n >= len(slice) {
-		return slice[0:0]
+	if n >= len(slice) || n < 0 {
+		return slice[:]
 	}
 	return slice[n:]
 }
