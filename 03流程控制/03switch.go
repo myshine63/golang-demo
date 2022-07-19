@@ -12,8 +12,10 @@ func main() {
 		fallthrough
 	case 3:
 		println(3)
-	default:
+	case 4:
 		println(4)
+	default:
+		println(5)
 	}
 	// 结果将打印2和3
 }

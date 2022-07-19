@@ -1,22 +1,21 @@
 package main
 
+import "fmt"
+
 func main() {
-	a, b := 1, 2
-	sum, sub := op(a, b)
-	println(sum)
-	println(sub)
-	println(op(a, b))
-	println(defaultValue())
+	sum, sub := op(1, 2)
+	fmt.Println(sum, sub)
+	fmt.Println(defaultValue())
+	fmt.Println(add(1, 2, 3))
 }
 
 // 同一个包内，函数名不能重复
 
-// 参数的形式: 变量名 类型。参数和返回参数列表相当于申明了一些变量，在函数体内部可以直接使用。
-func op(a int, b int) (sum int, sub int) {
+// 参数的形式: 变量名 类型。参数列表和返回值列表，相当于申明了变量，可以直接在函数体内部使用
+func op(a, b int) (sum, sub int) {
 	sum = a + b
 	sub = a - b
-	// 返回值的顺序可以函数返回列表不一致，以返回的顺序为准
-	return
+	return // 返回值顺序以返回值列表顺序
 }
 
 // 返回默认值
@@ -30,5 +29,5 @@ func add(slice ...int) (sum int) {
 	for _, value := range slice {
 		sum += value
 	}
-	return sum
+	return
 }

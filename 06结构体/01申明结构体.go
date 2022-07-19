@@ -2,19 +2,24 @@ package main
 
 import "fmt"
 
+// User 定义User结构体类型，同一个包内，不能重名
 type User struct {
-	male bool
-	age  int
+	Id  int // 首字母大写，表示public属性，可以在当前包外被访问
+	age int
 }
 
 func main() {
-	var a User // a是结构体实例
+	/* 实例化结构体的3种方法 **/
+	// a是结构体实例
+	var a User
 	fmt.Println("a", a)
-	var b *User // b是实例指针，但是还没有实例化，不能直接使用
+	// 返回User类型指针
+	b := new(User)
 	fmt.Println("b", b)
-	b = new(User) // 实例化
-	fmt.Println("b", *b)
-	c := &User{} // c是结构体实例指针
+	fmt.Println("*b", *b)
+	// 返回User类型指针，和上面方式一样
+	c := &User{}
 	fmt.Println("c", c)
-	fmt.Println("c", *c)
+	fmt.Println("*c", *c)
+
 }

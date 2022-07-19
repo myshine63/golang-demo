@@ -12,19 +12,22 @@ func (p People) getUserName() string {
 }
 
 type Student struct {
-	user  People
+	People
 	score int
 }
 
 func main() {
-	tom := Student{
-		user: People{
+	var tom Student
+	fmt.Println("default:", tom)
+	tom = Student{
+		People: People{
 			name: "tom",
 			age:  13,
 		},
 		score: 30,
 	}
-	fmt.Println(tom)
-	fmt.Println(tom.user.name)
-	fmt.Println(tom.user.getUserName())
+	fmt.Println("tom:", tom)
+	fmt.Println("name", tom.getUserName())
+	fmt.Println("age:", tom.age)
+	fmt.Println("score", tom.score)
 }

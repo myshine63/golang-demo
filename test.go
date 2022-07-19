@@ -1,6 +1,13 @@
 package main
 
+type People struct {
+	name string
+}
+
 func main() {
-	arr := []int{1, 2, 3}
-	arr2 := append(arr, 4)
+
+}
+
+func (user *People) changeName(name string) {
+	user.name = name
 }
