@@ -21,5 +21,4 @@ func main() {
 	c := &User{}
 	fmt.Println("c", c)
 	fmt.Println("*c", *c)
-
 }
