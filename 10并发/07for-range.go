@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func main() {
-	channel := make(chan int, 10)
+	channel := make(chan int, 3)
 	// 向channel中写入数据
 	go func() {
-		for i := 0; i < 10; i++ {
+		for i := 0; i < 3; i++ {
 			channel <- i
 			fmt.Println("向channel中写入数据：", i)
 		}
@@ -27,5 +26,5 @@ func main() {
 	for value := range channel {
 		fmt.Println("读取channel中的数据：", value)
 	}
-	time.Sleep(time.Second)
+	//time.Sleep(time.Second
 }
