@@ -7,12 +7,24 @@ import (
 	"time"
 )
 
-func connectSuccess() {
+func handle(conn net.Conn, i int) {
+	for n := 0; n < 3; n++ {
+		count, _ := conn.Write([]byte("this is client" + fmt.Sprintf("%d", i)))
+		fmt.Println("向服务器发送数据长度", count)
+		buf := make([]byte, 1024)
+		conn.Read(buf)
+		fmt.Println("从服务端读取的数据", string(buf))
+	}
+
+}
+func connectSuccess(i int) {
+	// 每次使用dial，就相当于创建了一个连接
 	conn, err := net.Dial("tcp", "localhost:8080")
 	if err != nil {
 		log.Fatal("连接失败", err) // 会阻止程序继续运行
 	}
 	fmt.Println("连接成功")
+	// 断开链接
 	defer func(conn net.Conn) {
 		err := conn.Close()
 		if err != nil {
@@ -21,11 +33,7 @@ func connectSuccess() {
 			fmt.Println("关闭连接成功")
 		}
 	}(conn)
-	count, _ := conn.Write([]byte("this is client222222"))
-	fmt.Println("向服务器发送数据长度", count)
-	buf := make([]byte, 1024)
-	conn.Read(buf)
-	fmt.Println("从服务端读取的数据", string(buf))
+	handle(conn, i)
 }
 
 func connectFail() {
@@ -47,5 +55,7 @@ func connectFail() {
 
 func main() {
 	//connectFail()
-	connectSuccess()
+	for i := 0; i < 3; i++ {
+		connectSuccess(i)
+	}
 }

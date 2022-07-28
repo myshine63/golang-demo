@@ -16,9 +16,16 @@ func main() {
 			ch <- i                                         // 向通道中写入数据
 			fmt.Printf("len=%v,cap=%v\n", len(ch), cap(ch)) // channel的长度和容量
 		}
+		close(ch)
 	}()
-	for i := 0; i < 3; i++ {
+	for {
 		time.Sleep(time.Second)
-		fmt.Println(<-ch) // 从channel中读取数据
+		data, ok := <-ch
+		if ok {
+			fmt.Println(data, ok) // 从channel中读取数据
+		} else {
+			fmt.Println("closed")
+			break
+		}
 	}
 }
