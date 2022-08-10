@@ -26,8 +26,6 @@ func server() {
 	fmt.Println("从客服端读取的数据长度为：", count, str)
 	// 向客服端发数据
 	conn.Write([]byte("hello tom"))
-	// 关闭连接
-	conn.Close()
 }
 func main() {
 	server()

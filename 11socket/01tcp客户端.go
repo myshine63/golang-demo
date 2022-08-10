@@ -25,14 +25,6 @@ func connectSuccess(i int) {
 	}
 	fmt.Println("连接成功")
 	// 断开链接
-	defer func(conn net.Conn) {
-		err := conn.Close()
-		if err != nil {
-			fmt.Println("关闭接口失败")
-		} else {
-			fmt.Println("关闭连接成功")
-		}
-	}(conn)
 	handle(conn, i)
 }
 
