@@ -1,5 +1,6 @@
 package main
 
+// 在包内都能访问
 var h = 123
 
 func main() {
@@ -8,7 +9,7 @@ func main() {
 	// 自动获取变量类型
 	var b = "hello tom"
 	// 短变量申明方式，不能在全局中使用，并且一次至少要申明一个新变量
-	c := 'c' // 字符类型的变量
+	var c rune = 'c' // 字符类型的变量
 	// 一次申明多个变量
 	var d, e = "hello", 123
 	var f string

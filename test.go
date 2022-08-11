@@ -1,51 +1,11 @@
 package main
 
-import (
-	"fmt"
-	"log"
-	"net"
-	"time"
-)
-
-func connectSuccess() {
-	conn, err := net.Dial("tcp", "localhost:8080")
-	if err != nil {
-		log.Fatal("连接失败", err) // 会阻止程序继续运行
-	}
-	fmt.Println("连接成功")
-	defer func(conn net.Conn) {
-		err := conn.Close()
-		if err != nil {
-			fmt.Println("关闭接口失败")
-		} else {
-			fmt.Println("关闭连接成功")
-		}
-	}(conn)
-	count, _ := conn.Write([]byte("this is client222222"))
-	fmt.Println("向服务器发送数据长度", count)
-	buf := make([]byte, 1024)
-	conn.Read(buf)
-	fmt.Println("从服务端读取的数据", string(buf))
-}
-
-func connectFail() {
-	// 3秒未连接成功，则超时失败
-	conn, err := net.DialTimeout("tcp", "www.baidu.com:81", 3*time.Second)
-	if err != nil {
-		log.Fatal("连接失败", err) // 会阻止程序继续运行
-	}
-	defer func(conn net.Conn) {
-		err := conn.Close()
-		if err != nil {
-			fmt.Println("关闭接口失败")
-		} else {
-			fmt.Println("关闭连接成功")
-		}
-	}(conn)
-	log.Println("连接成功")
-}
+import "fmt"
 
 func main() {
-	//connectFail()
-	connectSuccess()
+	var (
+		a, b int
+		c    string
+	)
+	fmt.Println(a, b, c)
 }

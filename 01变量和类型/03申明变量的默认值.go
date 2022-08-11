@@ -7,6 +7,7 @@ func main() {
 		c string  // ""
 		d float64 // 0
 		e *int    // nil
+		f rune    // 0,用来表示char类型，用int32来表示
 	)
 	println(a)
 	println(b)
@@ -14,4 +15,5 @@ func main() {
 	println(d)
 	println(e)
 	println(&e)
+	println(f)
 }
