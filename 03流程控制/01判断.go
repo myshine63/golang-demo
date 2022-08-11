@@ -10,6 +10,7 @@ func main() {
 	} else {
 		fmt.Println("大于10")
 	}
+	// if后面跟一个语句
 	// a的作用域只限于这个if语句
 	if a := "123"; len(a) <= 3 {
 		fmt.Println("123的长度小于3")
