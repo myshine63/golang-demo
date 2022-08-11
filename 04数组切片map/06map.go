@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	// 申明一个map,并没有分配内存
+	// 申明一个map,默认值为nil
 	var a map[string]int
 	//a["name"] = 123 // 没有分配空间,不能直接使用
 	a = make(map[string]int, 10) // 可以不指定容量，但是可以优化
