@@ -15,7 +15,7 @@ func main() {
 func op(a, b int) (sum, sub int) {
 	sum = a + b
 	sub = a - b
-	return // 返回值顺序以返回值列表顺序
+	return
 }
 
 // 返回默认值
