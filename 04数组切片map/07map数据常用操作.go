@@ -20,7 +20,19 @@ func main() {
 	} else {
 		fmt.Println("mouse不存在")
 	}
+	//changeMap
+	s := changeMap(student)
+	fmt.Println("changeMap后")
+	fmt.Println(student)
+	fmt.Println(s)
 	// 删除map的某个属性
 	delete(student, "jerry")
 	fmt.Println(student)
+}
+
+// 传入的m会被改变
+func changeMap(m map[string]int) map[string]int {
+	m["blackCat"] = 4
+	m["tom"] = 5
+	return m
 }

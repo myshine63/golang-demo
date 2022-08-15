@@ -7,17 +7,18 @@ type Fruits struct {
 	price int
 }
 
-// 指针类型实例和普通类型实例都可以通过点运算，调用实例方法
+// 结构体实例和指针类型实例都可以通过点运算，调用实例方法
 
-// 参数为指针类型，会改变实例的值
+// 接受者类型为指针，会改变实例的值,将结构体的地址进行传递
 func (fruit *Fruits) changePrice(price int) {
 	fruit.price = price
 }
 
-// 参数为非指针类型，
+// 接受者类型为值，不会改变值，将结构体拷贝一份进行传递
 func (fruit Fruits) changeName(name string) {
 	fruit.name = name
 }
+
 func main() {
 	// 实例类型
 	apple := Fruits{

@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+// 切片本质都是数组的视图
+// 当append添加元素，超过容量的时候，go会再底层重新创建一个2倍容量的数组，因此新生成的切片，不在是原数组的视图
+
 func main() {
 	// 切片的长度和容量可变
 	//newSlice()
