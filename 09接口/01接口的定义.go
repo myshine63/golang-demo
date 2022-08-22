@@ -22,11 +22,11 @@ func (user Person) getName() string {
 	return user.name
 }
 
-func (user *Person) setName(name string) {
+func (user Person) setName(name string) {
 	user.name = name
 }
 
-// 只要实现了People的结构体，他的实例都可以做参数，调用这个方法
+// 参数为接口类型，只要实现了该接口的数据类型，都可以作为参数传进去
 func changeName(people People) {
 	fmt.Println("修改之前people的名字为", people.getName())
 	people.setName("tom")
@@ -37,9 +37,11 @@ func main() {
 	jerry := Person{
 		name: "jerry",
 	}
-	changeName(&jerry) // 只能将结构体实例指针赋值给接口实例
-	var spike People   // 申明一个接口实例
-	spike = &Person{
+	// 只能将结构体实例指针赋值给接口实例
+	changeName(jerry)
+	// 接口类型，可以用来接收实现了该接口类型数据的指针
+	var spike People // 申明一个接口实例
+	spike = Person{
 		name: "spike",
 	}
 	fmt.Println(spike.getName())
