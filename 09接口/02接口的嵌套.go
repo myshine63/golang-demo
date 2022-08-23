@@ -2,6 +2,12 @@ package main
 
 import "fmt"
 
+/*
+	1. 接口类型只能嵌入其他接口类型
+	2. 接口类型不能简介或者直接嵌入本身
+	3. 如果B嵌入了A，那么B可以赋值给A,但是A不可以赋值给B
+**/
+
 // One 定义一个接口
 type One interface {
 	logOne()

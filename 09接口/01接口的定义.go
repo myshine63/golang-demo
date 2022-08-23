@@ -2,10 +2,15 @@ package main
 
 import "fmt"
 
-// interface 是一种具有一组方法的类型，这些方法定义了 interface 的行为
-// go 允许不带任何方法的 interface ，这种类型的 interface 叫 empty interface
-// 所有的类型都实现了empty interface
-// 如果一个类型实现了一个 interface 中所有方法，我们说类型实现了该 interface
+/*
+1.接口是一组方法集合的类型
+2.接口也可以不包含任何方法，这时称这个接口为空接口
+3.所有的数据类型都实现了空接口，因此可以用空接口接收所有数据类型的值
+4.如果一个数据类型实现了一个接口中所有方法，我们说类型实现该接口
+5.接口类型的参数和变量，可以用来接收实现了该接口的数据类型的值和指针
+6.如果结构体的方法的接受者都不为指针类型，则可以传入实例，否则必须传入指针，因此最好传入指针类型，避免出现错误
+7.如果A接口的是B接口的子集，那么B接口类型的变量可以赋值给A接口，反之则不可以
+**/
 
 // People 定义一个接口
 type People interface {
@@ -13,7 +18,7 @@ type People interface {
 	setName(name string)
 }
 
-// Person 定义一个结构体，他的两个方法和接口People的方法一样，因此他实现了People接口
+// Person 中的两个方法实现了People接口
 type Person struct {
 	name string
 }
@@ -26,7 +31,7 @@ func (user Person) setName(name string) {
 	user.name = name
 }
 
-// 参数为接口类型，只要实现了该接口的数据类型，都可以作为参数传进去
+// 接口类型参数，可以用来接收实现了该接口的数据类型的值或者指针
 func changeName(people People) {
 	fmt.Println("修改之前people的名字为", people.getName())
 	people.setName("tom")
@@ -37,11 +42,9 @@ func main() {
 	jerry := Person{
 		name: "jerry",
 	}
-	// 只能将结构体实例指针赋值给接口实例
-	changeName(jerry)
-	// 接口类型，可以用来接收实现了该接口类型数据的指针
-	var spike People // 申明一个接口实例
-	spike = Person{
+	changeName(&jerry)
+	var spike People
+	spike = &Person{
 		name: "spike",
 	}
 	fmt.Println(spike.getName())

@@ -1,11 +1,18 @@
 package main
 
+import "fmt"
+
 func main() {
 	// 闭包:在f1作用域定义的一个变量a，被f2作用域使用后。当f1执行完毕后，变量a的内存不会被释放，
 	// 它会等到f2执行完毕后在释放，这样就形成了闭包。闭包扩展了变量的使用范围，但是资源一直得不到释放，容易引起内存泄露
-	count := a(10)
-	println(count(1))
-	println(count(1))
+	//count := a(10)
+	//println(count(1))
+	//println(count(1))
+	myAdd := add2(10)
+	c, myAdd := myAdd(1)
+	fmt.Println(c)
+	c, myAdd = myAdd(1)
+	fmt.Println(c)
 }
 
 // 在a函数定义的变量sum被f1使用了，因此当a执行完毕后，sum变量会持续存在
@@ -15,4 +22,12 @@ func a(initialVal int) func(int) int {
 		return initialVal
 	}
 	return f1
+}
+
+type fn func(int) (int, fn)
+
+func add2(initial int) fn {
+	return func(i int) (int, fn) {
+		return i + initial, add2(i + initial)
+	}
 }

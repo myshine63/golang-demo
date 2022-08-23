@@ -2,13 +2,15 @@ package main
 
 import "fmt"
 
+// 将接口类型变量，赋值给普通类型时，需要使用类型断言
+
 func log(value interface{}, key bool) {
 	if key {
 		fmt.Println("success")
+		fmt.Printf("value is %v,类型是:%T \n", value, value)
 	} else {
-		fmt.Println("fail")
+		fmt.Println("fail", value)
 	}
-	fmt.Printf("value is %v,类型是:%T \n", value, value)
 }
 
 func switchType() {
@@ -30,19 +32,17 @@ func switchType() {
 }
 
 func okPattern() {
+	// 断言成功，返回该类型的值和true，断言失败，返回该类型的零值和false
 	var a interface{} = 1
-	// 断言失败，ok为false,b为字符串类型的空值
-	b, ok := a.(string)
+	b, ok := a.(string) // "",false
 	log(b, ok)
-	// 断言失败，ok为false,c为bool类型的默认值也就是false
-	c, ok := a.(bool)
+	c, ok := a.(bool) // false,false
 	log(c, ok)
-	// 如果断言成功，这ok为true,b将转换成字符串类型
-	d, ok := a.(int)
+	d, ok := a.(int) // 1,true
 	log(d, ok)
 }
 
 func main() {
-	switchType()
-	//okPattern()
+	//switchType()
+	okPattern()
 }
