@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	defer fmt.Println("exist")
-	panic("123")
-	defer fmt.Println("end")
+	buf := make([]byte, 1024)
+	fmt.Println(string(buf))
 }

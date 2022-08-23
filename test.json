@@ -1,0 +1,14 @@
+{
+  "name": "tom",
+  "age": 14,
+  "sex": true,
+  "language": [
+    "go",
+    "js",
+    "node"
+  ],
+  "addr": {
+    "phone": "12345",
+    "address": "成都"
+  }
+}
