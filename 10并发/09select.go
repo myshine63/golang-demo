@@ -10,7 +10,7 @@ import (
 // 当其中一条case的用例可以执行时，便会执行。
 
 func main() {
-	ch := make(chan int, 10)
+	ch := make(chan int, 3)
 	// 写入数据
 	go func() {
 		for i := 0; i < 3; i++ {

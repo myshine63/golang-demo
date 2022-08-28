@@ -8,12 +8,12 @@ func main() {
 	channel := make(chan int, 3)
 	// 向channel中写入数据
 	go func() {
+		// 关闭管道，之后不可以在发送数据，但是可以读取数据
+		defer close(channel)
 		for i := 0; i < 3; i++ {
 			channel <- i
 			fmt.Println("向channel中写入数据：", i)
 		}
-		// 关闭管道，之后不可以在发送数据，但是可以读取数据
-		close(channel)
 	}()
 	// 读取channel中的数据
 	//go func() {
@@ -26,5 +26,5 @@ func main() {
 	for value := range channel {
 		fmt.Println("读取channel中的数据：", value)
 	}
-	//time.Sleep(time.Second
+	//time.Sleep(time.Second)
 }
