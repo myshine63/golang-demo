@@ -30,7 +30,7 @@ func myReadDir() {
 
 // 递归读取该文件夹下的所有文件夹和文件，包括路径本身
 func readAll() {
-	err := filepath.WalkDir("D:\\go-work\\src\\golang-demo\\12包管理", func(path string, d fs.DirEntry, err error) error {
+	err := filepath.WalkDir("D:\\go-work\\src\\golang-demo\\12package-manager", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}

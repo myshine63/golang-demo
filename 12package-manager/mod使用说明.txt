@@ -1,3 +1,3 @@
 1. go mod init 新建一个go mod 项目
-2. go tidy 重新下载所有依赖，并移除没有使用的依赖
+2. go mod tidy 重新下载所有依赖，并移除没有使用的依赖
 3. go build ./... 对没有使用go mod 项目迁移到go mod项目时，可以用来下载所有依赖项
